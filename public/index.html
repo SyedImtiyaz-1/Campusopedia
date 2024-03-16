@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="description"
+        content="The Gokul Global University at Sidhpur provide one of the earliest form of technical studies, which has been vital in setting up the standard of brilliance.">
+    <meta name="keywords" content="Gokul Global University,Collage">
+    <meta name="author" content="Jaydipsinh Solanki">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <title>Campusopedia</title>
+
+    <link rel="stylesheet" href="css/main_style.css">
+    <link rel="shortcut icon" href="image/favicon.ico" type="image/svg+xml">
+    <link rel="stylesheet" href="css/chatbot.css">
+</head>
+
+<body>
+
+    <section class="header">
+        <nav>
+            <h2 style="color: white;">Campusopedia</h2>
+            <div class="nav-links" id="navLinks">
+
+                <span class="icon" onclick="hidemenu()">&#10005;</span>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="attendance.html">Attendance</a></li>
+                    <li><a href="books.html">Explore Our Library</a></li>
+                    <li id="loginLink"><a href="/login.html">Login</a></li>
+                    <!-- <li id="logoutLink" style="display: none;"><a href="#" onclick="logout()">Logout</a></li> -->
+                </ul>
+            </div>
+            <span class="icon" onclick="showmenu()">&#9776;</span>
+        </nav>
+
+        <div class="text-box">
+            <h1>Library System and Consistency Attendance</h1>
+            <p>Explore Things and amazing books/pdf and gain yourknowledge also ask our chatbot regarding more
+                imformation. <br>Don't forgive to give a review.</p>
+            <a href="books.html" class="hero-btn">Explore Our Library</a>
+        </div>
+    </section>
+
+    <script>
+
+        window.onload = function () {
+            console.log('Window loaded');
+            const loggedIn = getCookie('loggedIn');
+
+            if (!loggedIn) {
+                // User is not logged in, redirect to the login page
+                window.location.href = '/login.html';
+            } else {
+                // User is logged in, show the home page
+                const loginLink = document.getElementById('loginLink');
+                createLogoutButton();
+                loginLink.style.display = 'none';
+            }
+        };
+
+        function createLogoutButton() {
+            const logoutLink = document.createElement('li');
+            logoutLink.id = 'logoutLinkDynamic';
+            logoutLink.innerHTML = '<a href="#" onclick="logout()">Logout</a>';
+
+            const navLinks = document.querySelector('.nav-links ul');
+            navLinks.appendChild(logoutLink);
+        }
+
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        function logout() {
+            // Clear the loggedIn cookie
+            document.cookie = 'loggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+
+            // Redirect to the login page
+            window.location.href = '/login.html';
+        }
+
+
+    </script>
+
+    <section class="course" id="course_call">
+        <h1>Services</h1>
+        <!-- <p>We are offer to three best computer science course for student by Gokul Global University</p> -->
+
+        <div class="row">
+            <div class="course-col">
+                <h2>Library</h2>
+                <p>Top books are available, you can read books and can download it. Our service is free of cost there is
+                    no charges needed to enroll or read the books.</p>
+            </div>
+
+            <div class="course-col">
+                <h2>AI Assistant</h2>
+                <p>Campusopedia AI Assistant will help you figure out new books and will help you to guide which book is
+                    good for you as per your prompt.</p>
+            </div>
+
+            <div class="course-col">
+                <h2>Consistency/Attendance</h2>
+                <p>Let's be consistent in reading books and it will also increase the level of our knowledge as well as
+                    our english. You can mark your attendance in the attendance section.</p>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!--   Chat Bot   -->
+    <button class="chatbot__button">
+        <span class="material-symbols-outlined">mode_comment</span>
+        <span class="material-symbols-outlined">close</span>
+    </button>
+
+    <div class="chatbot">
+        <div class="chatbot__header">
+            <h3 class="chatbox__title">Campusopedia</h3>
+            <span class="material-symbols-outlined">close</span>
+        </div>
+        <ul class="chatbot__box">
+            <li class="chatbot__chat incoming">
+                <span class="material-symbols-outlined">smart_toy</span>
+                <p>Hi there. How can I help you today?</p>
+            </li>
+            <li class="chatbot__chat outgoing">
+                <!-- <p>...</p> -->
+            </li>
+        </ul>
+        <form id="chatbotForm" action="/ask" method="POST"> <!-- Add action and method here -->
+            <div class="chatbot__input-box">
+                <textarea class="chatbot__textarea" name="message" placeholder="Enter a message..." required></textarea>
+                <button style="cursor: pointer;" type="submit" id="send-btn" class="material-symbols-outlined">send</button>
+                <!-- Change span to button and add type="submit" -->
+            </div>
+        </form>
+    </div>
+
+    <!--  chat bot finish  -->
+
+    <section class="campus">
+        <h1> Books </h1>
+        <div class="row">
+            <div class="campus-col">
+                <img src="https://alysbcohen.files.wordpress.com/2015/01/little-princess-book-cover.jpg" alt="">
+                <div id="book1" style="cursor: pointer;" class="layer">
+                    <h3>ComA Little Princessmunity</h3>
+                </div>
+            </div>
+
+            <div class="campus-col">
+                <img src="https://s-media-cache-ak0.pinimg.com/564x/f9/8e/2d/f98e2d661445620266c0855d418aab71.jpg"
+                    alt="">
+                <div id="book2" style="cursor: pointer;" class="layer">
+                    <h3>Frankenstein</h3>
+                </div>
+            </div>
+
+            <div class="campus-col">
+                <img src="http://d.gr-assets.com/books/1414348859l/23209971.jpg" alt="">
+                <div id="book3" style="cursor: pointer;" class="layer">
+                    <h3>EducGirl at Waration</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        var book1 = document.getElementById('book1');
+        var book2 = document.getElementById('book2');
+        var book3 = document.getElementById('book3');
+
+        // Add event listeners to each image
+        book1.addEventListener('click', function () {
+            console.log("Book 1 clicked"); // Log message to verify the click event
+            window.location.href = './books.html'; // Redirect to books.html
+        });
+
+        book2.addEventListener('click', function () {
+            console.log("Book 2 clicked"); // Log message to verify the click event
+            window.location.href = './books.html'; // Redirect to books.html
+        });
+
+        book3.addEventListener('click', function () {
+            console.log("Book 3 clicked"); // Log message to verify the click event
+            window.location.href = './books.html'; // Redirect to books.html
+        });
+
+    </script>
+
+    <!--Call To Action Section-->
+
+    <!--Footer-->
+    <br><br><br>
+    <section class="footer">
+        <h4>About Us</h4>
+        <p>Welcome to Campusopedia Library and Attendance System
+            <br>
+            Campusopedia brings you a comprehensive platform that combines the functionalities of a library management
+            system <br> with an attendance tracking system, designed to streamline academic operations and enhance
+            student engagement.
+        </p>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <h3>Campusopedia</h3>
+            <p>Raj Template is a blog website where you will find great tutorials on web design and development.
+                Here each tutorial is beautifully described step by step with the required source code.</p>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-menu">
+                <ul class="f-menu">
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./books.html">Our Library</a></li>
+                    <li><a href="./attendance.html">Attendance</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <p align="center">Copyright &copy; <a style="color: rgb(42, 232, 124);" href="index.html">Campusopedia</a> </p>
+    </footer>
+
+    <!--Javascript is Start-->
+    <script src="javascript/main_script.js"></script>
+    <script src="./javascript/login.js"></script>
+    <script src="./chatbot.js"></script>
+
+</body>
+
+</html>

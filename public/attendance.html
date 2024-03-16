@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Attendance</title>
+	<link rel="stylesheet" href="./css/attendance.css">
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+	<link rel="stylesheet" href="./css/chatbot.css">
+	<link rel="stylesheet" href="./css/books.css">
+</head>
+
+<body>
+	<section class="header">
+		<nav>
+			<h2 style="color: white;">Campusopedia</h2>
+			<div class="nav-links" id="navLinks">
+
+				<span class="icon" onclick="hidemenu()">&#10005;</span>
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="attendance.html">Attendance</a></li>
+					<li><a href="books.html">Explore Our Library</a></li>
+					<li id="loginLink"><a href="/login.html">Login</a></li>
+					<!-- <li id="logoutLink" style="display: none;"><a href="#" onclick="logout()">Logout</a></li> -->
+				</ul>
+			</div>
+			<span class="icon" onclick="showmenu()">&#9776;</span>
+		</nav>
+
+	</section>
+
+	<!--   Chat Bot   -->
+    <button class="chatbot__button">
+        <span class="material-symbols-outlined">mode_comment</span>
+        <span class="material-symbols-outlined">close</span>
+    </button>
+
+    <div class="chatbot">
+        <div class="chatbot__header">
+            <h3 class="chatbox__title">Campusopedia</h3>
+            <span class="material-symbols-outlined">close</span>
+        </div>
+        <ul class="chatbot__box">
+            <li class="chatbot__chat incoming">
+                <span class="material-symbols-outlined">smart_toy</span>
+                <p>Hi there. How can I help you today?</p>
+            </li>
+            <li class="chatbot__chat outgoing">
+                <!-- <p>...</p> -->
+            </li>
+        </ul>
+        <form id="chatbotForm" action="/ask" method="POST"> <!-- Add action and method here -->
+            <div class="chatbot__input-box">
+                <textarea class="chatbot__textarea" name="message" placeholder="Enter a message..." required></textarea>
+                <button style="cursor: pointer;" type="submit" id="send-btn" class="material-symbols-outlined">send</button>
+                <!-- Change span to button and add type="submit" -->
+            </div>
+        </form>
+    </div>
+
+    <!--  chat bot finish  -->
+
+	<script>
+
+		window.onload = function () {
+			console.log('Window loaded');
+			const loggedIn = getCookie('loggedIn');
+			const username = getCookie('username'); // Get the username from the cookie
+
+			if (!loggedIn) {
+				// User is not logged in, redirect to the login page
+				window.location.href = '/login.html';
+			} else {
+				// User is logged in, show the home page
+				const loginLink = document.getElementById('loginLink');
+				createLogoutButton();
+				loginLink.style.display = 'none';
+
+				// Update the username displayed on the page
+				const usernameElement = document.getElementById('username');
+				usernameElement.textContent = username;
+
+				// Update the name displayed on the page
+				const nameElement = document.querySelector('.name');
+				nameElement.textContent = username;
+			}
+		};
+
+
+		function createLogoutButton() {
+			const logoutLink = document.createElement('li');
+			logoutLink.id = 'logoutLinkDynamic';
+			logoutLink.innerHTML = '<a href="#" onclick="logout()">Logout</a>';
+
+			const navLinks = document.querySelector('.nav-links ul');
+			navLinks.appendChild(logoutLink);
+		}
+
+		function getCookie(name) {
+			const value = `; ${document.cookie}`;
+			const parts = value.split(`; ${name}=`);
+			if (parts.length === 2) return parts.pop().split(';').shift();
+		}
+
+		function logout() {
+			// Clear the loggedIn cookie
+			document.cookie = 'loggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+
+			// Redirect to the login page
+			window.location.href = '/login.html';
+		}
+
+
+	</script>
+	<div class="container">
+		<h1>Welcome, <span id="username"></span>!</h1>
+		<div class="attendance-list">
+			<!-- Attendance entries will be dynamically added here -->
+		</div>
+	</div>
+
+	<section>
+		<div class="box1 box">
+			<div class="content">
+				<br>
+				<div class="image">
+					<img src="./image/personIcon.png" alt="Profile Image">
+					<br>
+				</div>
+				<div class="level">
+					<p>Student</p>
+				</div>
+				<div class="text">
+					<p class="name">Ethan Rivers</p>
+					<p class="job_title"></p>
+				</div>
+				<div class="button">
+					<div>
+						<form id="attendanceForm" action="/attendance" method="post">
+							<input type="hidden" id="usernameInput" name="username" value="Ethan Rivers">
+							<input type="hidden" id="statusInput" name="status">
+							<input type="hidden" id="dateTimeInput" name="dateTime">
+							<button class="message" type="button" onclick="markAttendance('Present')">Present</button>
+							<button class="connect" type="button" onclick="markAttendance('Absent')">Absent</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+	<script src="./javascript/attendance.js"></script>
+	<script src="./chatbot.js"></script>
+</body>
+
+</html>

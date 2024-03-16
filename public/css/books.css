@@ -1,0 +1,346 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url(../Poppins/Poppins-Regular.ttf);
+}
+
+@font-face {
+    font-family: bold;
+    src: url(../Poppins/Poppins-Bold.ttf);
+}
+
+@font-face {
+    font-family: secound;
+    src: url(../Poppins/Poppins-Bold.ttf);
+}
+
+
+h1 {
+    font-family: bold;
+}
+
+body {
+    font-family: myFirstFont, Verdana, Geneva, Tahoma, sans-serif;
+    cursor: default;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 910px;
+}
+
+.container h1{
+    z-index: 999;
+}
+
+.header {
+    margin: 0;
+    height: 5rem;
+    width: 100%;
+    background-color: rgb(29, 118, 150);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+nav {
+    display: flex;
+    padding: 0 3rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav img {
+    width: 150px;
+}
+
+.nav-links {
+    flex: 1;
+    text-align: right;
+}
+
+.nav-links ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-links ul li::after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: #ff0000;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+.nav-links ul li:hover::after {
+    width: 100%;
+}
+
+.text-box {
+    width: 90%;
+    color: #fff;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    text-align: center;
+}
+
+.text-box h1 {
+    font-size: 62px;
+    font-weight: bold;
+}
+
+.text-box p {
+    margin: 10px 0 40px;
+    font-size: 14px;
+    color: #fff;
+}
+
+.hero-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: yellow;
+    border: 2px solid yellow;
+    padding: 12px 34px;
+    font-size: 13px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.hero-btn:hover {
+    color: black;
+    border: 2px solid yellow;
+    background: yellow;
+    transition: 0.5s;
+}
+
+.icon {
+    display: none;
+}
+
+.choose {
+    width: 100%;
+    height: 40px;
+}
+
+.fa {
+    margin-right: 20px;
+    font-size: 30px;
+    color: gray;
+    float: right;
+}
+
+/******************************************
+  Book stuff
+  *******************************************/
+
+.book {
+    display: inline-block;
+    cursor: pointer;
+    width: 230px;
+    height: 390px;
+    box-shadow: 0 0 20px #aaa;
+    margin: 25px;
+    padding: 10px 10px 0 10px;
+    vertical-align: top;
+    transition: height 1s;
+}
+
+/* star button */
+.book:after {
+    font-family: FontAwesome;
+    content: "\f006";
+    font-size: 35px;
+    position: relative;
+    left: -.1cm;
+    top: -1.6cm;
+    float: right;
+}
+
+.cover {
+    border: 2px solid gray;
+    height: 80%;
+    overflow: hidden;
+}
+
+.cover img {
+    width: 100%;
+}
+
+.book p {
+    margin-top: 12px;
+    font-size: 20px;
+}
+
+.book .author {
+    font-size: 15px;
+}
+
+@media (max-width: 941px) {
+    .container {
+        max-width: 700px;
+    }
+
+    .book {
+        margin: 49px;
+    }
+}
+
+@media (max-width: 730px) {
+    .book {
+        display: block;
+        margin: 0 auto;
+        margin-top: 50px;
+    }
+
+    .cover {}
+}
+
+/*********************************
+  other
+  **********************************/
+
+h1 {
+    color: gray;
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: -3px;
+}
+
+/**********************************
+  display change
+  ***********************************/
+/*book height smaller, cover opacity, move text onto cover and star too
+  animate it */
+#list-th:target .book {
+    height: 100px;
+    width: 250px;
+    padding: 10px;
+    margin: 25px auto 25px auto;
+}
+
+#list-th:target .cover {
+    width: 246px;
+}
+
+#list-th:target img {
+    opacity: .1;
+}
+
+#list-th:target p {
+    margin-top: -62px;
+    margin-left: 20px;
+}
+
+/* remove button? */
+#large-th:target .book {
+    height: 390px;
+}
+
+/***********************************
+  star animation
+  ***********************************/
+/***********************************
+  zoom on click
+  ***********************************/
+
+
+.searchbox {
+    width: 350px;
+    height: auto;
+    background-color: #1e272e;
+    cursor:text;
+  /*   margin: 20vh auto; */
+    position: absolute;
+    top: 18rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 4rem;
+    padding: 10px;
+  }
+  
+  .search__box {
+    float: left;
+    width: 0;
+    height: 2.6rem;
+  /*   display: inline; */
+    background: none;
+    color: #f7f7f7;
+    font-size: 1.5rem;
+    border-radius: 2rem;
+    outline: none;
+    border: none;
+    position: relative;
+    opacity: 1;
+    transition: all .75s ease-in;
+    cursor: pointer;
+  /*   border: 2px solid tomato; */
+  /*   margin-top: 5px; */
+  }
+  
+  /* .search__box:focus, .search__box:hover {
+    background-color: #f1f2f6;
+  } */
+  
+  .search__icon {
+    box-sizing: border-box;
+    float: right;
+    font-size: 2rem;
+    display: inline-block;
+  /*   justify-content: center;
+    align-items: center; */
+    margin-left: .2rem;
+    margin-top: 0;
+    cursor: pointer;
+    position: absolute;
+    color: #fa983a;
+    transition: all .25s ease-in;
+    padding: .4rem;
+    border-radius: 50%;
+  }
+  
+  .searchbox:hover > .search__box {
+    width: 85%;
+    cursor: text;
+    /* padding: 0 1rem; */
+  }
+  
+  .searchbox:hover > .search__icon {
+    background-color: #eee;
+  }
+  
+  .show {
+    width: 85%;
+    border: 1px solid red;
+  }
+  
+  
+  /* Responsive CSS for screens below 600px */
+
+@media (max-width: 599px) {
+    .header {
+        height: 7rem;
+    }
+
+    .container {
+        max-width: 400px;
+    }
+
+    .book {
+        display: block;
+        margin: 0 auto;
+        margin-top: 50px;
+    }
+}
